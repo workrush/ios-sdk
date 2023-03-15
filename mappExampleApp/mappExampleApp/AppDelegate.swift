@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppoxeeNotificationDelega
     
     func appoxee(_ appoxee: Appoxee, handledRemoteNotification pushNotification: APXPushNotification, andIdentifer actionIdentifier: String) {
         print(pushNotification);
+        Appoxee.shared()?.saveUserNotificationCategory([shopPromotionsCategory, fixItPromotionsCategory, cityFixItNewsCategory, countryFixItNewsCategory])
         if let deepLink = pushNotification.extraFields?["apx_dpl"] {
             _ = application(app: UIApplication.shared, openURL: NSURL(string: deepLink as! String) ?? NSURL(), options: [:])
         }
